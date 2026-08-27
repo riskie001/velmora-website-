@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Velmora Model Hub — a Thika-based fashion, modeling and creative-media platform connecting talent with opportunity." />
+  <meta name="theme-color" content="#080808" />
+  <title>Velmora Model Hub | Where Talent Meets Opportunity</title>
+  <link rel="icon" type="image/png" href="assets/velmora-logo.png" />
+  <style>
+    :root{
+      --bg:#070707; --panel:#101010; --panel2:#151515; --text:#f6f1e8;
+      --muted:#b8b0a4; --gold:#c7a45a; --gold2:#f0d18a; --line:rgba(199,164,90,.22);
+      --max:1180px; --shadow:0 24px 70px rgba(0,0,0,.38);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:
+      radial-gradient(circle at 80% 0%,rgba(199,164,90,.12),transparent 28rem),var(--bg);
+      color:var(--text);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(var(--max),calc(100% - 40px));margin:auto}
+    .eyebrow{color:var(--gold2);text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;font-weight:800}
+    .gold{color:var(--gold2)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 19px;border:1px solid var(--line);
+      border-radius:999px;font-weight:800;font-size:.9rem;transition:.25s ease;cursor:pointer}
+    .btn.primary{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#090909;border-color:transparent}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(199,164,90,.16)}
+    header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(7,7,7,.78);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.06)}
+    nav{height:76px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{width:48px;height:48px;object-fit:contain}
+    .brand strong{font-family:Georgia,serif;letter-spacing:.14em;font-size:1.05rem}
+    .brand span{display:block;color:var(--muted);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase}
+    .links{display:flex;gap:24px;align-items:center}
+    .links a{color:#ddd;font-size:.84rem}
+    .links a:hover{color:var(--gold2)}
+    .menu{display:none;background:none;border:0;color:#fff;font-size:1.5rem}
+    .hero{min-height:100vh;display:grid;align-items:center;padding:130px 0 70px;position:relative;overflow:hidden}
+    .hero:after{content:"";position:absolute;width:500px;height:500px;border-radius:50%;border:1px solid var(--line);right:-250px;bottom:-250px}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}
+    h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(3.4rem,7vw,6.6rem);line-height:.92;letter-spacing:-.04em;margin:18px 0 25px}
+    .hero p{max-width:640px;color:#c7c0b5;font-size:1.05rem}
+    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+    .hero-note{display:flex;gap:26px;margin-top:42px;padding-top:22px;border-top:1px solid var(--line)}
+    .hero-note strong{display:block;font-size:1.35rem;color:var(--gold2)}
+    .hero-note span{color:var(--muted);font-size:.75rem}
+    .hero-visual{position:relative;min-height:590px}
+    .hero-card{position:absolute;inset:0 0 0 50px;border:1px solid var(--line);border-radius:28px;overflow:hidden;background:#111;box-shadow:var(--shadow)}
+    .hero-card img{width:100%;height:100%;object-fit:cover;object-position:center 35%;filter:saturate(.9)}
+    .hero-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.82))}
+    .hero-label{position:absolute;z-index:2;left:28px;right:28px;bottom:25px}
+    .hero-label h3{font-family:Georgia,serif;font-size:1.8rem}
+    section{padding:105px 0}
+    .section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:45px}
+    .section-head h2{font-family:Georgia,serif;font-size:clamp(2.3rem,5vw,4rem);line-height:1}
+    .section-head p{max-width:520px;color:var(--muted)}
+    .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px}
+    .manifesto{border:1px solid var(--line);border-radius:24px;padding:34px;background:linear-gradient(145deg,#121212,#090909)}
+    .manifesto h3{font-family:Georgia,serif;font-size:2rem;margin:14px 0}
+    .manifesto p{color:var(--muted)}
+    .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
+    .stat{padding:20px;border:1px solid rgba(255,255,255,.07);border-radius:16px;background:#0c0c0c}
+    .stat b{display:block;font-size:1.55rem;color:var(--gold2)}
+    .stat small{color:var(--muted)}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{border:1px solid rgba(255,255,255,.08);background:linear-gradient(150deg,#121212,#0b0b0b);border-radius:22px;padding:28px;min-height:245px;transition:.25s}
+    .card:hover{border-color:var(--line);transform:translateY(-4px)}
+    .icon{width:46px;height:46px;border:1px solid var(--line);border-radius:14px;display:grid;place-items:center;color:var(--gold2);font-size:1.2rem}
+    .card h3{margin:22px 0 8px;font-size:1.1rem}
+    .card p{color:var(--muted);font-size:.9rem}
+    .card ul{list-style:none;margin-top:14px;color:#cfc8bd;font-size:.84rem}
+    .card li{margin:5px 0}.card li:before{content:"— ";color:var(--gold)}
+    .model-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:50px;align-items:center}
+    .model-photo{border-radius:26px;overflow:hidden;border:1px solid var(--line);background:#111;box-shadow:var(--shadow)}
+    .model-photo img{aspect-ratio:4/5;object-fit:cover;object-position:center top}
+    .model-copy h3{font-family:Georgia,serif;font-size:2.7rem;margin:12px 0}
+    .pillrow{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}
+    .pill{border:1px solid var(--line);border-radius:999px;padding:7px 11px;color:#d7c9ae;font-size:.75rem}
+    .quote{margin-top:26px;padding:20px 0 0;border-top:1px solid var(--line);color:#ddd;font-family:Georgia,serif;font-size:1.15rem}
+    .showcase{background:linear-gradient(180deg,#0d0d0d,#111);border-block:1px solid rgba(255,255,255,.06)}
+    .showcase-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .feature{min-height:310px;border-radius:22px;padding:30px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+    .feature.large{min-height:420px;grid-row:span 2;background:linear-gradient(135deg,rgba(199,164,90,.12),#101010)}
+    .feature h3{position:absolute;left:30px;bottom:55px;font-family:Georgia,serif;font-size:2rem}
+    .feature p{position:absolute;left:30px;right:30px;bottom:22px;color:var(--muted);font-size:.84rem}
+    .feature .num{position:absolute;right:25px;top:20px;color:var(--gold);font-size:.75rem;letter-spacing:.18em}
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .gallery-item{aspect-ratio:4/3;border-radius:18px;border:1px dashed var(--line);background:linear-gradient(135deg,#151515,#0b0b0b);display:grid;place-items:center;text-align:center;padding:20px;color:#837b6f}
+    .gallery-item strong{display:block;color:#b9a77e;margin-bottom:5px}
+    .cta{border:1px solid var(--line);border-radius:28px;padding:55px;background:radial-gradient(circle at 85% 20%,rgba(199,164,90,.15),transparent 26rem),#101010;display:flex;align-items:center;justify-content:space-between;gap:30px}
+    .cta h2{font-family:Georgia,serif;font-size:clamp(2.3rem,5vw,4.2rem);line-height:1}
+    .cta p{color:var(--muted);max-width:600px;margin-top:14px}
+    footer{padding:55px 0 25px;border-top:1px solid rgba(255,255,255,.07)}
+    .footer-grid{display:grid;grid-template-columns:1.3fr .8fr .8fr;gap:40px}
+    footer p,footer a{color:var(--muted);font-size:.85rem}
+    footer h4{margin-bottom:12px;color:#eee}
+    .socials{display:flex;gap:9px;margin-top:17px}.socials a{border:1px solid var(--line);border-radius:999px;padding:7px 11px}
+    .copyright{margin-top:45px;padding-top:18px;border-top:1px solid rgba(255,255,255,.06);font-size:.75rem;color:#777}
+    @media(max-width:900px){
+      .links{display:none}.menu{display:block}
+      .hero-grid,.about-grid,.model-grid{grid-template-columns:1fr}.hero-visual{min-height:520px}.hero-card{inset:0}
+      .cards{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:620px){
+      .container{width:min(var(--max),calc(100% - 28px))}
+      section{padding:78px 0}.hero{padding-top:110px}.hero-visual{min-height:440px}
+      .cards,.gallery,.showcase-grid{grid-template-columns:1fr}.feature.large{grid-row:auto}
+      .section-head,.cta{display:block}.section-head p{margin-top:18px}.cta .actions{margin-top:25px}
+      .footer-grid{grid-template-columns:1fr}.hero-note{gap:15px}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <a class="brand" href="#home" aria-label="Velmora home">
+        <img src="assets/velmora-logo.png" alt="Velmora logo">
+        <div><strong>VELMORA</strong><span>Model Hub</span></div>
+      </a>
+      <div class="links">
+        <a href="#about">About</a><a href="#services">Services</a><a href="#models">Models</a>
+        <a href="#creative">Creative</a><a href="#contact">Contact</a>
+      </div>
+      <a class="btn primary" href="https://wa.me/254788504540?text=Hello%20Velmora%2C%20I%20would%20like%20to%20make%20an%20inquiry%20about%20your%20services." target="_blank" rel="noopener">Book Velmora</a>
+    </nav>
+  </div>
+</header>
+
+<main id="home">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Thika · Kiambu · Kenya</div>
+        <h1>Where Talent<br><span class="gold">Meets Opportunity.</span></h1>
+        <p>Velmora Model Hub is a fashion, modeling and creative-media platform connecting trained talent with brands, designers, events and ambitious people ready to be seen.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://wa.me/254788504540?text=Hello%20Velmora%2C%20I%20would%20like%20to%20make%20an%20inquiry%20about%20your%20services." target="_blank" rel="noopener">Start a Conversation ↗</a>
+          <a class="btn" href="#services">Explore Services</a>
+        </div>
+        <div class="hero-note">
+          <div><strong>01</strong><span>Talent-led</span></div>
+          <div><strong>02</strong><span>Creative-driven</span></div>
+          <div><strong>03</strong><span>Commercial-minded</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <img src="assets/fredrick-ngugi.jpeg" alt="Velmora model Fredrick Ngugi">
+          <div class="hero-label"><div class="eyebrow">Featured Talent</div><h3>Built Different.</h3></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <div><div class="eyebrow">The Hub</div><h2>More than<br>a modeling group.</h2></div>
+        <p>We bring together models, designers, media creatives, trainers, judges and event talent to create opportunities that can grow into real careers and real businesses.</p>
+      </div>
+      <div class="about-grid">
+        <div class="manifesto">
+          <div class="eyebrow">Our purpose</div>
+          <h3>Build talent. Create visibility. Open doors.</h3>
+          <p>Velmora is building a home for creative talent in Thika—where people can showcase their skills, collaborate with brands and turn creativity into opportunity.</p>
+          <div class="stats">
+            <div class="stat"><b>Thika</b><small>Our creative base</small></div>
+            <div class="stat"><b>2026</b><small>Velmora era begins</small></div>
+            <div class="stat"><b>5+</b><small>Creative service areas</small></div>
+            <div class="stat"><b>1 Hub</b><small>Many talents, one vision</small></div>
+          </div>
+        </div>
+        <div class="cards">
+          <article class="card"><div class="icon">✦</div><h3>Talent Network</h3><p>Trained models and creative professionals ready for commercial opportunities.</p></article>
+          <article class="card"><div class="icon">◈</div><h3>Brand Partnerships</h3><p>Campaign-ready talent and creative production for businesses that want attention.</p></article>
+          <article class="card"><div class="icon">◎</div><h3>Creative Community</h3><p>A platform for designers, photographers, editors and emerging creatives to collaborate.</p></article>
+          <article class="card"><div class="icon">↗</div><h3>Growth Mindset</h3><p>We focus on skills, visibility, professionalism and sustainable opportunities.</p></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="showcase">
+    <div class="container">
+      <div class="section-head">
+        <div><div class="eyebrow">What We Do</div><h2>Creative services<br>with a fashion edge.</h2></div>
+        <p>Whether you need talent, training, content or an entire fashion activation, Velmora can assemble the right creative team for the job.</p>
+      </div>
+      <div class="cards">
+        <article class="card"><div class="icon">01</div><h3>Velmora Models</h3><p>Professional talent for fashion, commercial and promotional work.</p><ul><li>Runway models</li><li>Commercial models</li><li>Promotional models</li><li>Brand ambassadors</li></ul></article>
+        <article class="card"><div class="icon">02</div><h3>Velmora Academy</h3><p>Practical development for aspiring and working models.</p><ul><li>Runway walking</li><li>Posing & stage confidence</li><li>Grooming & presentation</li><li>Camera confidence</li></ul></article>
+        <article class="card"><div class="icon">03</div><h3>Velmora Media</h3><p>Visual storytelling that gives people and brands something worth watching.</p><ul><li>Fashion photography</li><li>Videography</li><li>TikTok & Reels content</li><li>Model portfolios</li></ul></article>
+        <article class="card"><div class="icon">04</div><h3>Velmora Events</h3><p>Talent and creative support for memorable fashion and brand experiences.</p><ul><li>Fashion shows</li><li>Runway showcases</li><li>Event ushers</li><li>Brand activations</li></ul></article>
+        <article class="card"><div class="icon">05</div><h3>Velmora Creative</h3><p>Collaborative campaigns built around fashion, design and visual identity.</p><ul><li>Designer collaborations</li><li>Fashion campaigns</li><li>Creative direction</li><li>Business content</li></ul></article>
+        <article class="card"><div class="icon">06</div><h3>Velmora Panel</h3><p>A fleet of experienced talent for evaluation and event decision-making.</p><ul><li>Model judging</li><li>Competition panels</li><li>Talent assessment</li><li>Event judging support</li></ul></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="models">
+    <div class="container">
+      <div class="section-head">
+        <div><div class="eyebrow">Featured Talent</div><h2>Meet the<br>Velmora roster.</h2></div>
+        <p>This roster is intentionally built to grow. New model profiles, specialties and portfolios can be added as Velmora expands.</p>
+      </div>
+      <div class="model-grid">
+        <div class="model-photo"><img src="assets/fredrick-ngugi.jpeg" alt="Fredrick Ngugi — Velmora model"></div>
+        <div class="model-copy">
+          <div class="eyebrow">01 · Male Model</div>
+          <h3>Fredrick Ngugi</h3>
+          <p>Runway model and judge with a focus on confident presentation, stage presence and fashion-forward performance.</p>
+          <div class="pillrow"><span class="pill">Runway</span><span class="pill">Judging</span><span class="pill">Stage Presence</span><span class="pill">Fashion</span></div>
+          <a class="btn" href="https://www.instagram.com/mr_kiambu_county/" target="_blank" rel="noopener">@mr_kiambu_county ↗</a>
+          <div class="quote">“The roster grows. The standard stays high.”</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="creative" class="showcase">
+    <div class="container">
+      <div class="section-head">
+        <div><div class="eyebrow">The Velmora Experience</div><h2>From runway<br>to real business.</h2></div>
+        <p>Our model hub is designed to serve both talent and clients—turning fashion skills into campaigns, experiences, content and opportunities.</p>
+      </div>
+      <div class="showcase-grid">
+        <div class="feature large"><span class="num">01 / STREET</span><h3>Velmora Street</h3><p>Fashion-led street content that puts Thika's style, talent and creativity in the spotlight.</p></div>
+        <div class="feature"><span class="num">02 / ACADEMY</span><h3>Train & Develop</h3><p>Structured runway, posing, grooming and confidence development.</p></div>
+        <div class="feature"><span class="num">03 / BRANDS</span><h3>Campaign Ready</h3><p>Connect brands with models and content creatives for commercial campaigns.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="container">
+      <div class="section-head">
+        <div><div class="eyebrow">Portfolio</div><h2>The gallery<br>is growing.</h2></div>
+        <p>More street shoots, runway moments, designer collaborations and events can be added here without changing the structure of the website.</p>
+      </div>
+      <div class="gallery">
+        <div class="gallery-item"><div><strong>Street Shoots</strong><span>Add campaign images here</span></div></div>
+        <div class="gallery-item"><div><strong>Runway</strong><span>Add runway images here</span></div></div>
+        <div class="gallery-item"><div><strong>Designer Features</strong><span>Add designer work here</span></div></div>
+        <div class="gallery-item"><div><strong>Behind the Scenes</strong><span>Add BTS images here</span></div></div>
+        <div class="gallery-item"><div><strong>Events</strong><span>Add event images here</span></div></div>
+        <div class="gallery-item"><div><strong>Video Reels</strong><span>Link social videos here</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="cta">
+        <div>
+          <div class="eyebrow">Let's create something.</div>
+          <h2>Have a project?<br><span class="gold">Let's talk.</span></h2>
+          <p>Looking for models, training, fashion content, event talent, judging or a creative partner for your brand? Tell us what you're building.</p>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="https://wa.me/254788504540?text=Hello%20Velmora%2C%20I%20would%20like%20to%20make%20an%20inquiry%20about%20your%20services." target="_blank" rel="noopener">WhatsApp Velmora ↗</a>
+          <a class="btn" href="mailto:velmoramodelhub@gmail.com">Email Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="#home"><img src="assets/velmora-logo.png" alt=""><div><strong>VELMORA</strong><span>Model Hub</span></div></a>
+        <p style="margin-top:15px;max-width:380px">A fashion, modeling and creative-media platform based in Thika, Kiambu County, Kenya.</p>
+        <div class="socials">
+          <a href="https://www.tiktok.com/@velmora_254" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.instagram.com/velmora_254/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+      <div><h4>Explore</h4><p><a href="#about">About Velmora</a></p><p><a href="#services">Services</a></p><p><a href="#models">Models</a></p><p><a href="#gallery">Portfolio</a></p></div>
+      <div><h4>Contact</h4><p>Thika, Kiambu County, Kenya</p><p><a href="tel:+254788504540">0788 504 540</a></p><p><a href="mailto:velmoramodelhub@gmail.com">velmoramodelhub@gmail.com</a></p><p style="margin-top:12px"><a href="https://wa.me/254788504540?text=Hello%20Velmora%2C%20I%20would%20like%20to%20make%20an%20inquiry%20about%20your%20services." target="_blank" rel="noopener">Book via WhatsApp ↗</a></p></div>
+    </div>
+    <div class="copyright">© 2026 Velmora Model Hub. All rights reserved. · Built Different.</div>
+  </div>
+</footer>
+</body>
+</html>
